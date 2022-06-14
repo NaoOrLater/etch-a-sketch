@@ -1,2 +1,3 @@
 # etch-a-sketch
-Using HTML, CSS, and JavaScript to create an etch a sketch type app webpage
+TOP Project demonstrating aptitude in 
+HTML, CSS, JS, and DOM Manipulation to create an etch a sketch type app webpage
