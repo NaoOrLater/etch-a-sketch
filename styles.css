@@ -1,0 +1,23 @@
+html {
+    box-sizing: border-box;
+  }
+
+*, *::before, *::after {
+    box-sizing: inherit;
+  }
+
+#container {
+    display: flex;
+}
+
+/* div.column  {
+    border: red solid 2px;
+    height: 25px;
+    width: 25px;
+} */
+
+div.grid-box  {
+    border: red solid 2px;
+    height: 25px;
+    width: 25px;
+}
