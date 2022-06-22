@@ -18,6 +18,7 @@
 <script>
   const container = document.querySelector('#container');
   
+  //Creates 16x16 grid
   for (let i=0; i<16; i++) {
     const columnDiv = document.createElement('div');
     columnDiv.setAttribute('class', 'column');
@@ -29,4 +30,9 @@
     };
   };
 
+  let boxes = document.querySelectorAll('.grid-box');
+
+boxes.forEach(box => box.addEventListener('mouseover', () => {
+  box.style.background = 'black'
+}))
   </script>
