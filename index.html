@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<h1>Etch-A-Sketch</h1>
 <div id="container">
 </div>
 
@@ -19,19 +20,25 @@
   const container = document.querySelector('#container');
   
   //Creates 16x16 grid
-  for (let i=0; i<16; i++) {
+  function createGrid (number) {
+  for (let i=0; i<number; i++) {
     const columnDiv = document.createElement('div');
     columnDiv.setAttribute('class', 'column');
     container.appendChild(columnDiv);
-      for (let i=0; i<16; i++) {
+      for (let i=0; i<number; i++) {
         const gridBox = document.createElement('div');
         gridBox.setAttribute('class', 'grid-box');
         columnDiv.appendChild(gridBox);
-    };
-  };
+    }
+  }
+};
+
+createGrid(16);
 
   let boxes = document.querySelectorAll('.grid-box');
 
+  //Adds color change by hovering over boxes
+  //This is a way to add an Event listener to multiple elements with the same class
 boxes.forEach(box => box.addEventListener('mouseover', () => {
   box.style.background = 'black'
 }))
