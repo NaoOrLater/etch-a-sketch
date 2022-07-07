@@ -14,8 +14,9 @@ body {
 
 #container {
     display: flex;
-    height: 600px;
-    width: 600px;
+    height: 500px;
+    width: 500px;
+    margin-bottom: 20px;
 }
 
 .column {
@@ -28,4 +29,9 @@ div.grid-box  {
     border: gray solid 1px;
     width: 100%;
     flex-grow: 1;
+}
+
+button {
+  margin-left: 5px;
+  margin-right: 5px;
 }

@@ -12,12 +12,14 @@
 <h1>Etch-A-Sketch</h1>
 <div id="container">
 </div>
-
+<div id="buttons">
+</div>
 </body>
 </html>
 
 <script>
   const container = document.querySelector('#container');
+  const buttons = document.querySelector('#buttons');
   
   //Creates 16x16 grid
   function createGrid (number) {
@@ -32,9 +34,35 @@
     }
   }
 };
+  createGrid(32);
 
-createGrid(32);
+  //Creates button element but under different variables so I can manipulate them
+  const blackbtn = document.createElement('button');
+  const colorbtn = document.createElement('button');
+  const gridbtn = document.createElement('button');
+  const resetbtn = document.createElement('button');
+  
+  blackbtn.textContent = 'B&W';
+  blackbtn.setAttribute('type', 'button');
+  blackbtn.setAttribute('class', 'black-white');
+  buttons.appendChild(blackbtn);
 
+  colorbtn.textContent = 'Color';
+  colorbtn.setAttribute('type', 'button');
+  colorbtn.setAttribute('class', 'color');
+  buttons.appendChild(colorbtn);
+
+  gridbtn.textContent = 'Change grid size';
+  gridbtn.setAttribute('type', 'button');
+  gridbtn.setAttribute('class', 'grid-size');
+  buttons.appendChild(gridbtn);
+
+  resetbtn.textContent = 'Reset';
+  resetbtn.setAttribute('type', 'button');
+  resetbtn.setAttribute('class', 'reset');
+  buttons.appendChild(resetbtn);
+  
+  
   let boxes = document.querySelectorAll('.grid-box');
 
   //Adds color change by hovering over boxes
@@ -42,4 +70,25 @@ createGrid(32);
 boxes.forEach(box => box.addEventListener('mouseover', () => {
   box.style.background = 'black'
 }))
+
+function color() {
+  function randomNum() {
+    return Math.floor(Math.random() * 255);
+  };
+  boxes.forEach(box => box.addEventListener('mouseover', () => {
+  box.style.background = `rgb(${randomNum()}, ${randomNum()},${randomNum()})`;
+}))};
+
+function black() {
+  boxes.forEach(box => box.addEventListener('mouseover', () => {
+  box.style.background = 'black'
+}))};
+
+  const colorBoxes = document.getElementsByClassName('color');
+  const blackBoxes = document.getElementsByClassName('black-white');
+
+  //Using getElementsByClassName will return an array-like object so I have to use an index to access the element
+  //If I wanted to apply changes to all elements using getElementsByClassName, I would have to use a for loop
+  colorBoxes[0].addEventListener('click', color);
+  blackBoxes[0].addEventListener('click', black);
   </script>
