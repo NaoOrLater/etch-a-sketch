@@ -84,11 +84,24 @@ function black() {
   box.style.background = 'black'
 }))};
 
+function reset () {
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  };
+  createGrid (16)
+  black()
+};
+
   const colorBoxes = document.getElementsByClassName('color');
   const blackBoxes = document.getElementsByClassName('black-white');
+  const createCustomGrid = document.getElementsByClassName('grid-size');
+  const resetGrid = document.getElementsByClassName('reset');
+  console.log(document);
 
   //Using getElementsByClassName will return an array-like object so I have to use an index to access the element
   //If I wanted to apply changes to all elements using getElementsByClassName, I would have to use a for loop
   colorBoxes[0].addEventListener('click', color);
   blackBoxes[0].addEventListener('click', black);
+  resetGrid[0].addEventListener('click', reset);
+
   </script>
