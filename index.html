@@ -34,7 +34,7 @@
     }
   }
 };
-  createGrid(32);
+  createGrid(16);
 
   //Creates button element but under different variables so I can manipulate them
   const blackbtn = document.createElement('button');
@@ -63,45 +63,90 @@
   buttons.appendChild(resetbtn);
   
   
-  let boxes = document.querySelectorAll('.grid-box');
 
   //Adds color change by hovering over boxes
   //This is a way to add an Event listener to multiple elements with the same class
-boxes.forEach(box => box.addEventListener('mouseover', () => {
-  box.style.background = 'black'
-}))
+function black() {
+  let boxes = document.querySelectorAll('.grid-box');
+
+  boxes.forEach(function(box) {
+    box.removeEventListener('mouseover', () => {
+    box.style.background = 'black'
+    console.log(1);
+    });
+    box.addEventListener('mouseover', () => {
+    box.style.background = 'black'
+    console.log(1);
+    });
+  })
+};
+
+black();
 
 function color() {
+  let boxes = document.querySelectorAll('.grid-box');
+  
   function randomNum() {
     return Math.floor(Math.random() * 255);
   };
-  boxes.forEach(box => box.addEventListener('mouseover', () => {
-  box.style.background = `rgb(${randomNum()}, ${randomNum()},${randomNum()})`;
-}))};
 
-function black() {
-  boxes.forEach(box => box.addEventListener('mouseover', () => {
-  box.style.background = 'black'
-}))};
+  boxes.forEach(function(box) {
+    box.removeEventListener('mouseover', () => {
+    box.style.background = `rgb(${randomNum()}, ${randomNum()},${randomNum()})`;
+    console.log(1);
+      });
+    box.addEventListener('mouseover', () => {
+    box.style.background = `rgb(${randomNum()}, ${randomNum()},${randomNum()})`;
+    console.log(1);
+      });
+    }
+  )
+};
+
+function customGridSize() {
+  let number = prompt('Please enter the grid size you would like to create #x#')
+
+  if (number > 2 && number < 40) {
+    while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  };
+  createGrid (number);
+  color()
+  black();
+  };
+};
 
 function reset () {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   };
-  createGrid (16)
-  black()
+  createGrid (16);
+  color()
+  black();
+
 };
 
   const colorBoxes = document.getElementsByClassName('color');
   const blackBoxes = document.getElementsByClassName('black-white');
   const createCustomGrid = document.getElementsByClassName('grid-size');
   const resetGrid = document.getElementsByClassName('reset');
-  console.log(document);
 
   //Using getElementsByClassName will return an array-like object so I have to use an index to access the element
   //If I wanted to apply changes to all elements using getElementsByClassName, I would have to use a for loop
-  colorBoxes[0].addEventListener('click', color);
+;
   blackBoxes[0].addEventListener('click', black);
+    
+  colorBoxes[0].addEventListener('click', color);
+  
+  createCustomGrid[0].addEventListener('click', customGridSize);
+
   resetGrid[0].addEventListener('click', reset);
 
   </script>
+
+  <!-- 
+  First problem: the buttons added multiple event listeners to the grid when clicked
+  Second problem: the color functions wouldn't run after the reset button was clicked/Solution: had to assign a variable for the newly generated boxes with class of grid-box, 
+  so moved the boxes variable from global into color functions
+  
+  -->
